@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { GlobalStyle } from '../styles/GlobalStyles'
+import { Layout } from '../styles/Layout'
 
 const IndexPage = () => {
   return (
-    <>
-      <GlobalStyle />
-      <main>finding the little things</main>
-    </>
+    <Layout>
+      <p>finding the little things</p>
+    </Layout>
   )
 }
 
