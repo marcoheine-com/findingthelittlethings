@@ -18,6 +18,8 @@ export const EtsyShop = () => {
         },
       })
 
+      console.log(response)
+
       if (!response.ok) {
         return new Error(response.statusText)
       }
@@ -27,6 +29,8 @@ export const EtsyShop = () => {
       return error
     }
   })
+
+  console.log(ETSY_API)
 
   const renderEtyItems = () =>
     data.results.map((item) => (
