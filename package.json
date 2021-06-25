@@ -28,6 +28,7 @@
     "gatsby-plugin-sitemap": "^4.1.0",
     "gatsby-plugin-styled-components": "^4.5.0",
     "gatsby-source-contentful": "^5.5.0",
+    "gatsby-source-etsy": "^1.0.0",
     "gatsby-source-filesystem": "^3.5.0",
     "gatsby-transformer-sharp": "^3.5.0",
     "prettier": "^2.3.0",

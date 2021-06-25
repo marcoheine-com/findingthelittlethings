@@ -17,6 +17,13 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
+      resolve: 'gatsby-source-etsy',
+      options: {
+        api_key: process.env.GATSBY_ETSY_API_KEY,
+        shop_id: 'FindingLittleThings',
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: ['Recursive'],

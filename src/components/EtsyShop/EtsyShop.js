@@ -1,44 +1,42 @@
 import * as React from 'react'
 import * as ui from './ui'
-import { useQuery } from 'react-query'
-
-const ETSY_API = `${
-  process.env.NODE_ENV === 'development'
-    ? 'https://cors-anywhere.herokuapp.com/'
-    : ''
-}https://openapi.etsy.com/v2/shops/findinglittlethings/listings/active?api_key=${
-  process.env.GATSBY_ETSY_API_KEY
-}&includes=MainImage`
+import { useStaticQuery, graphql } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 export const EtsyShop = () => {
-  const { status, data } = useQuery('etsyData', async () => {
-    try {
-      const response = await fetch(ETSY_API, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-
-      console.log(response)
-
-      if (!response.ok) {
-        return new Error(response.statusText)
+  const data = useStaticQuery(graphql`
+    query {
+      allEtsyListing {
+        nodes {
+          id
+          title
+          price
+          url
+          description
+          childEtsyListingImage {
+            childFile {
+              childImageSharp {
+                gatsbyImageData(layout: CONSTRAINED, width: 400)
+              }
+            }
+          }
+        }
       }
-      const resultJSON = await response.json()
-      return resultJSON
-    } catch (error) {
-      return error
     }
-  })
-
-  console.log(ETSY_API)
+  `)
 
   const renderEtyItems = () =>
-    data.results.map((item) => (
-      <React.Fragment key={item.listing_id}>
+    data.allEtsyListing.nodes.map((item) => (
+      <React.Fragment key={item.id}>
         <p>{item.title}</p>
         <p>{item.price} €</p>
-        <img src={item.MainImage.url_170x135} />
+        <GatsbyImage
+          image={
+            item.childEtsyListingImage.childFile.childImageSharp
+              .gatsbyImageData
+          }
+          alt={item.title}
+        />
         <a href={item.url} target="_blank" rel="noopener noreferrer">
           Buy now
         </a>
@@ -48,13 +46,8 @@ export const EtsyShop = () => {
   return (
     <ui.Section>
       <h2>Shop</h2>
-      {status === 'loading' && <p>Loading etsy items...</p>}
 
-      {status === 'error' && (
-        <p>Could not load etsy items. Please try again.</p>
-      )}
-
-      {status === 'success' && data?.results && renderEtyItems()}
+      {renderEtyItems()}
     </ui.Section>
   )
 }
