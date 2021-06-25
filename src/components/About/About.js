@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import * as ui from './ui'
 
 export const About = () => {
   const data = useStaticQuery(graphql`
@@ -50,21 +51,25 @@ export const About = () => {
     } = edge.node
 
     return (
-      <div key={id}>
-        <h2>{headline}</h2>
-        <GatsbyImage image={image.gatsbyImageData} alt="Logo" />
-        <p>{text1.text1}</p>
-        <a href={link1} target="_blank" rel="noopener noreferrer">
-          {link1Label}
-        </a>
-        <a href={link2} target="_blank" rel="noopener noreferrer">
-          {link2Label}
-        </a>
-        <p>{text2.text2}</p>
-        <a href={link3} target="_blank" rel="noopener noreferrer">
-          {link3Label}
-        </a>
-      </div>
+      <ui.Background key={id} id="About">
+        <ui.Container>
+          <GatsbyImage image={image.gatsbyImageData} alt="Logo" />
+          <ui.Content>
+            <h2>{headline}</h2>
+            <p>{text1.text1}</p>
+            <a href={link1} target="_blank" rel="noopener noreferrer">
+              {link1Label}
+            </a>
+            <a href={link2} target="_blank" rel="noopener noreferrer">
+              {link2Label}
+            </a>
+            <p>{text2.text2}</p>
+            <a href={link3} target="_blank" rel="noopener noreferrer">
+              {link3Label}
+            </a>
+          </ui.Content>
+        </ui.Container>
+      </ui.Background>
     )
   })
 }

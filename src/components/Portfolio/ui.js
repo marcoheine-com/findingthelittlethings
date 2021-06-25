@@ -1,17 +1,12 @@
 import styled from 'styled-components'
 
 export const Background = styled.section`
-  background-color: ${({ theme }) => theme.colors.mistyrose};
+  background-color: ${({ theme }) => theme.colors.softviolet};
 `
 
 export const Container = styled.section`
+  align-items: center;
   display: flex;
-  gap: 20px;
   padding: 20px calc(${({ theme }) => theme.rootSpace} * 2.5);
-`
-
-export const Content = styled.div`
-  align-items: flex-start;
-  display: flex;
   flex-direction: column;
 `

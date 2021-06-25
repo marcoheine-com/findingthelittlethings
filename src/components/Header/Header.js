@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import Logo from '../../assets/svg/Logo_ftlt.svg'
 import * as ui from './ui'
 
@@ -30,7 +30,9 @@ export const Header = () => {
           })}
         </ui.Nav>
 
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
 
         <h1>Prints and Custom Illustrations</h1>
         <p>by Laura Heine</p>
