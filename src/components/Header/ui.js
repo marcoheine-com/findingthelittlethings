@@ -13,6 +13,8 @@ export const HeaderContent = styled.section`
 
 export const Nav = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   gap: calc(${({ theme }) => theme.rootSpace} * 3);
   list-style-type: none;
+  text-transform: uppercase;
 `

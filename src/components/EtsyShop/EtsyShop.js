@@ -16,7 +16,11 @@ export const EtsyShop = () => {
           childEtsyListingImage {
             childFile {
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 400)
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 270
+                  height: 270
+                )
               }
             }
           }
@@ -25,29 +29,31 @@ export const EtsyShop = () => {
     }
   `)
 
-  const renderEtyItems = () =>
-    data.allEtsyListing.nodes.map((item) => (
-      <React.Fragment key={item.id}>
-        <p>{item.title}</p>
-        <p>{item.price} €</p>
-        <GatsbyImage
-          image={
-            item.childEtsyListingImage.childFile.childImageSharp
-              .gatsbyImageData
-          }
-          alt={item.title}
-        />
-        <a href={item.url} target="_blank" rel="noopener noreferrer">
-          Buy now
-        </a>
-      </React.Fragment>
-    ))
-
   return (
     <ui.Section>
       <h2>Shop</h2>
-
-      {renderEtyItems()}
+      <ui.Items>
+        {data.allEtsyListing.nodes.map((item) => (
+          <ui.Item key={item.id}>
+            <GatsbyImage
+              image={
+                item.childEtsyListingImage.childFile.childImageSharp
+                  .gatsbyImageData
+              }
+              alt={item.title}
+            />
+            <p>{item.title}</p>
+            <p>{item.price} €</p>
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              buy on etsy
+            </a>
+          </ui.Item>
+        ))}
+      </ui.Items>
     </ui.Section>
   )
 }

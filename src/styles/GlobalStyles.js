@@ -12,4 +12,8 @@ export const GlobalStyle = createGlobalStyle`
     font-variation-settings: 'MONO' 1, 'CASL' 1, 'wght' 300, 'slnt' 0, 'CRSV' 0.5;
     font-size: 24px;
   }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `
