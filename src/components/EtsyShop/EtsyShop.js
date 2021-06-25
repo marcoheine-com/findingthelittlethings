@@ -7,7 +7,7 @@ const ETSY_API = `${
     ? 'https://cors-anywhere.herokuapp.com/'
     : ''
 }https://openapi.etsy.com/v2/shops/findinglittlethings/listings/active?api_key=${
-  process.env.ETSY_API_KEY
+  process.env.GATSBY_ETSY_API_KEY
 }&includes=MainImage`
 
 export const EtsyShop = () => {
