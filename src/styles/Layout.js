@@ -1,5 +1,4 @@
 import React from 'react'
-import { Main } from '../components/Main'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { GlobalStyle } from './GlobalStyles'
@@ -10,6 +9,10 @@ const Page = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+`
+
+const Main = styled.main`
+  flex-grow: 1;
 `
 
 export const Layout = ({ children }) => (
