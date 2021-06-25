@@ -3,8 +3,9 @@ import * as ui from './ui'
 import { useQuery } from 'react-query'
 
 const ETSY_API = `${
-  process.env.NODE_ENV === 'development' &&
-  'https://cors-anywhere.herokuapp.com/'
+  process.env.NODE_ENV === 'development'
+    ? 'https://cors-anywhere.herokuapp.com/'
+    : ''
 }https://openapi.etsy.com/v2/shops/findinglittlethings/listings/active?api_key=${
   process.env.ETSY_API_KEY
 }&includes=MainImage`
