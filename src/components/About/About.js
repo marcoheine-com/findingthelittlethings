@@ -20,7 +20,11 @@ export const About = () => {
             link3
             link3Label
             image {
-              gatsbyImageData
+              gatsbyImageData(
+                layout: CONSTRAINED
+                width: 180
+                height: 180
+              )
             }
             text1 {
               id
@@ -53,16 +57,35 @@ export const About = () => {
     return (
       <ui.Background key={id} id="About">
         <ui.Container>
-          <GatsbyImage image={image.gatsbyImageData} alt="Logo" />
+          <ui.LeftConfetti />
+          <ui.RightConfetti />
+          <ui.Image>
+            <GatsbyImage
+              image={image.gatsbyImageData}
+              alt="Logo"
+              objectFit="contain"
+              objectPosition="top"
+            />
+          </ui.Image>
+          <ui.Headline>{headline}</ui.Headline>
           <ui.Content>
-            <h2>{headline}</h2>
             <p>{text1.text1}</p>
-            <a href={link1} target="_blank" rel="noopener noreferrer">
-              {link1Label}
-            </a>
-            <a href={link2} target="_blank" rel="noopener noreferrer">
-              {link2Label}
-            </a>
+            <ui.LinkList>
+              <a
+                href={link1}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link1Label}
+              </a>
+              <a
+                href={link2}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link2Label}
+              </a>
+            </ui.LinkList>
             <p>{text2.text2}</p>
             <a href={link3} target="_blank" rel="noopener noreferrer">
               {link3Label}

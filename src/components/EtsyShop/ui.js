@@ -3,7 +3,12 @@ import styled from 'styled-components'
 export const Section = styled.section`
   background-color: ${({ theme }) => theme.colors.softviolet};
   padding: 20px 20px 36px;
+  margin-bottom: -110px;
   text-align: center;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `
 
 export const Items = styled.section`
