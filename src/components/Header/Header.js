@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
-import Logo from '../../assets/svg/Logo_ftlt.svg'
+import Logo from '../../assets/Logo_ftlt.svg'
 import * as ui from './ui'
 
 export const Header = () => {
@@ -19,6 +19,7 @@ export const Header = () => {
 
   return (
     <ui.Header>
+      <ui.RightConfetti />
       <ui.HeaderContent>
         <ui.Nav>
           {data?.allContentfulHeaderlinks?.edges?.map((edge) => {

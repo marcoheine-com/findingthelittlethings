@@ -1,7 +1,26 @@
 import styled from 'styled-components'
 
 export const Header = styled.header`
-  background-color: ${({ theme }) => theme.colors.mistyrose};
+  background-color: ${({ theme }) => theme.colors.softviolet};
+  background-image: url(./header-background.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top center;
+  position: relative;
+`
+export const RightConfetti = styled.div`
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(./Right-confetti.svg);
+  width: 100%;
+  height: 100%;
+  @media (min-width: 1000px) {
+    display: block;
+  }
 `
 
 export const HeaderContent = styled.section`
