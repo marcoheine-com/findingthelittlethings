@@ -7,7 +7,7 @@ export const Background = styled.section`
 export const Container = styled.section`
   display: flex;
   gap: 20px;
-  padding: 20px calc(${({ theme }) => theme.rootSpace} * 2.5);
+  padding: 20px 20px 36px;
 `
 
 export const Content = styled.div`

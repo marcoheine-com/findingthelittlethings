@@ -45,22 +45,24 @@ export const EtsyShop = () => {
         {etsyItems.map((item) => {
           return (
             <ui.Item key={item.id}>
-              <GatsbyImage
-                image={
-                  item.childEtsyListingImage.childFile.childImageSharp
-                    .gatsbyImageData
-                }
-                alt={item.title}
-              />
-              <p>{item.title}</p>
-              <p>{item.price} €</p>
-              <a
+              <ui.Link
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                buy on etsy
-              </a>
+                <GatsbyImage
+                  image={
+                    item.childEtsyListingImage.childFile
+                      .childImageSharp.gatsbyImageData
+                  }
+                  alt={item.title}
+                />
+                <ui.InfoText>
+                  <h3>{item.title}</h3>
+                  <p>{item.price} €</p>
+                  <ui.Button>buy on etsy</ui.Button>
+                </ui.InfoText>
+              </ui.Link>
             </ui.Item>
           )
         })}

@@ -6,7 +6,7 @@ import * as ui from './ui'
 export const Header = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulHeaderlinks {
+      allContentfulHeaderlinks(sort: { fields: order }) {
         edges {
           node {
             id
@@ -19,6 +19,7 @@ export const Header = () => {
 
   return (
     <ui.Header>
+      <ui.LeftConfetti />
       <ui.RightConfetti />
       <ui.HeaderContent>
         <ui.Nav>
