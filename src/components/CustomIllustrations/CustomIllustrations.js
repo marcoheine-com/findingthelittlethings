@@ -27,7 +27,12 @@ export const CustomIllustrations = () => {
           node {
             id
             image {
-              gatsbyImageData(layout: FIXED, width: 180, height: 180)
+              gatsbyImageData(
+                placeholder: BLURRED
+                layout: FIXED
+                width: 180
+                height: 180
+              )
             }
             text1 {
               text1

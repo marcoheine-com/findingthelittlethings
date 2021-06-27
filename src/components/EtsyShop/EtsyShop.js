@@ -18,6 +18,7 @@ export const EtsyShop = () => {
             childFile {
               childImageSharp {
                 gatsbyImageData(
+                  placeholder: BLURRED
                   layout: CONSTRAINED
                   width: 270
                   height: 270

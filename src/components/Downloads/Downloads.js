@@ -14,6 +14,7 @@ export const Downloads = () => {
             metaInfo
             previewImage {
               gatsbyImageData(
+                placeholder: BLURRED
                 layout: CONSTRAINED
                 width: 180
                 height: 180

@@ -22,6 +22,7 @@ export const About = () => {
             image {
               gatsbyImageData(
                 layout: CONSTRAINED
+                placeholder: BLURRED
                 width: 180
                 height: 180
               )

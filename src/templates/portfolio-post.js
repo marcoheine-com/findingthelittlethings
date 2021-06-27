@@ -29,7 +29,7 @@ export const pageQuery = graphql`
       headline
       media {
         title
-        gatsbyImageData
+        gatsbyImageData(placeholder: BLURRED)
       }
       body {
         raw
