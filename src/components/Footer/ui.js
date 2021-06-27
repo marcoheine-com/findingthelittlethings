@@ -10,6 +10,8 @@ export const Container = styled.footer`
   gap: calc(${({ theme }) => theme.rootSpace} * 11.25);
   padding: 56px;
   position: relative;
+  max-width: 780px;
+  margin: 0 auto;
 `
 
 export const RightConfetti = styled.div`
