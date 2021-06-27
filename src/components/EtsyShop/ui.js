@@ -1,13 +1,8 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  padding: 20px 20px 36px;
-  margin-bottom: -110px;
+  padding: 56px 20px 36px;
   text-align: center;
-
-  @media (min-width: 768px) {
-    margin-bottom: 0;
-  }
 `
 
 export const Items = styled.section`
