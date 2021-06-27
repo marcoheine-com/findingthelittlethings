@@ -26,7 +26,7 @@ export const Blog = () => {
           const { title, author, dateAndTime, slug } = edge.node
           return (
             <React.Fragment key={edge.node.id}>
-              <h4>{title}</h4>
+              <h3>{title}</h3>
               <span>{author}</span>
               <time>{dateAndTime}</time>
               <Link to={slug}>Read blog post</Link>

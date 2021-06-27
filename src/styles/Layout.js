@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
+import { SEO } from '../components/SEO'
 import { GlobalStyle } from './GlobalStyles'
 import { theme } from '../styles/theme'
 import styled, { ThemeProvider } from 'styled-components'
@@ -18,6 +19,7 @@ const Main = styled.main`
 export const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
+    <SEO />
     <Page>
       <Header />
       <Main>{children}</Main>

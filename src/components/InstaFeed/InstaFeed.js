@@ -9,6 +9,7 @@ export const InstaFeed = () => {
       allInstagramContent(limit: 5) {
         edges {
           node {
+            caption
             permalink
             id
             localImage {
@@ -25,11 +26,11 @@ export const InstaFeed = () => {
     }
   `)
   return (
-    <ui.Container id="Instagram">
+    <ui.Container>
       <h2>Instagram</h2>
       <ui.Content>
         {data?.allInstagramContent?.edges?.map((edge) => {
-          const { permalink, id, localImage } = edge.node
+          const { caption, permalink, id, localImage } = edge.node
 
           return (
             <a
@@ -40,6 +41,7 @@ export const InstaFeed = () => {
             >
               <GatsbyImage
                 image={localImage.childImageSharp.gatsbyImageData}
+                alt={caption}
               />
             </a>
           )

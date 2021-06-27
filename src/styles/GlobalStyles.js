@@ -34,5 +34,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   p {
     margin-top: 0;
+    line-height: 1.5;
   }
 `
