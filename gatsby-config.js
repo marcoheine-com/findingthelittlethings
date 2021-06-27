@@ -39,6 +39,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-instagram-all`,
+      options: {
+        access_token: process.env.GATSBY_INSTA_API_KEY,
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
