@@ -4,8 +4,10 @@ import '@fontsource/recursive/variable-full.css'
 export const GlobalStyle = createGlobalStyle`
 
   body {
-    font-family: 'Recursive';
+    background-color: ${({ theme }) => theme.colors.softviolet};
+    font-family: 'RecursiveVariable';
     font-size: 16px;
+    font-variation-settings: 'MONO' 1, 'CASL' 0, 'slnt' 0, 'CRSV' 0.5;
     font-weight: 300;
     margin: 0;
   }

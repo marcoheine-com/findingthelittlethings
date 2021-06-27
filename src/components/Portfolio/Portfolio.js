@@ -18,19 +18,17 @@ export const Portfolio = () => {
   `)
 
   return (
-    <ui.Background id="Portfolio">
-      <ui.Container>
-        <h2>Portfolio</h2>
-        {data?.allContentfulPortfolioPost?.edges?.map((edge) => {
-          const { headline, slug, id } = edge.node
-          return (
-            <React.Fragment key={id}>
-              <h4>{headline}</h4>
-              <Link to={slug}>More about {headline}</Link>
-            </React.Fragment>
-          )
-        })}
-      </ui.Container>
-    </ui.Background>
+    <ui.Container d="Portfolio">
+      <h2>Portfolio</h2>
+      {data?.allContentfulPortfolioPost?.edges?.map((edge) => {
+        const { headline, slug, id } = edge.node
+        return (
+          <React.Fragment key={id}>
+            <h4>{headline}</h4>
+            <Link to={slug}>More about {headline}</Link>
+          </React.Fragment>
+        )
+      })}
+    </ui.Container>
   )
 }

@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import '@fontsource/recursive/variable-full.css'
 
 export const Header = styled.header`
-  background-color: ${({ theme }) => theme.colors.softviolet};
   background-image: url(./header-background.svg);
   background-repeat: no-repeat;
   background-size: contain;
@@ -46,6 +45,8 @@ export const HeaderContent = styled.section`
   display: flex;
   flex-direction: column;
   padding: 0 calc(${({ theme }) => theme.rootSpace} * 2.5);
+  position: relative;
+  z-index: 2;
 `
 
 export const Nav = styled.ul`

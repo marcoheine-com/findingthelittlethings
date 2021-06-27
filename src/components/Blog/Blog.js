@@ -19,7 +19,7 @@ export const Blog = () => {
     }
   `)
   return (
-    <ui.Background>
+    <ui.Background id="Blog">
       <ui.Container>
         <h2>Blog</h2>
         {data?.allContentfulBlogPost?.edges?.map((edge) => {

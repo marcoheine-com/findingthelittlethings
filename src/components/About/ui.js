@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Background = styled.section`
-  background-color: ${({ theme }) => theme.colors.softviolet};
   background-image: url(./about-background.svg);
   background-repeat: no-repeat;
   background-position: top center;
