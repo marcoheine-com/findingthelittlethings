@@ -4,7 +4,7 @@ import '@fontsource/recursive/variable-full.css'
 export const Header = styled.header`
   background-image: url(./header-background.svg);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: top center;
   position: relative;
 `
@@ -44,9 +44,13 @@ export const HeaderContent = styled.section`
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 0 calc(${({ theme }) => theme.rootSpace} * 2.5);
+  padding: 0 20px 64px 20px;
   position: relative;
   z-index: 2;
+
+  h1 {
+    text-align: center;
+  }
 `
 
 export const Nav = styled.ul`
