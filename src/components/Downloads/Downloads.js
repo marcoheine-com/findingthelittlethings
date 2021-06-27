@@ -39,6 +39,8 @@ export const Downloads = () => {
       <ui.Container>
         <h2 id="Downloads">Free Downloads</h2>
 
+        <ui.LeftConfetti />
+        <ui.RightConfetti />
         <ui.Content>
           {data?.allContentfulDownload?.edges?.map((edge) => {
             const { id, previewImage, title, metaInfo, file } =
@@ -60,6 +62,8 @@ export const Downloads = () => {
                       key={item.file.fileName}
                       href={item.file.url}
                       download
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Download
                     </a>

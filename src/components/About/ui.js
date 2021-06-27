@@ -5,14 +5,15 @@ export const Background = styled.section`
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 `
 
 export const Container = styled.section`
   display: grid;
   padding: 240px 20px 120px;
   max-width: 780px;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
 
   @media (min-width: 768px) {

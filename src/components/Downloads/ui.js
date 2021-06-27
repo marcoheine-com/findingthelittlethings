@@ -8,9 +8,41 @@ export const Container = styled.section`
   padding: 100px 20px 120px;
   max-width: 1088px;
   margin: 0 auto;
-
+  position: relative;
   h2 {
     text-align: center;
+  }
+`
+
+export const RightConfetti = styled.div`
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(./download-right-confetti.svg);
+  display: none;
+  height: 100%;
+  right: 0;
+  top: 0;
+  position: absolute;
+  width: 50%;
+
+  @media (min-width: 1000px) {
+    display: block;
+  }
+`
+
+export const LeftConfetti = styled.div`
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(./download-left-confetti.svg);
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 50%;
+
+  @media (min-width: 1000px) {
+    display: block;
   }
 `
 
@@ -23,9 +55,22 @@ export const Content = styled.section`
 export const Item = styled.div`
   display: flex;
   flex-direction: column;
+
+  &:hover {
+    a {
+      color: ${({ theme }) => theme.colors.violet};
+    }
+  }
 `
 
 export const Text = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 8px 16px;
+
+  a {
+    font-family: 'RecursiveVariable';
+    font-variation-settings: 'MONO' 1, 'CASL' 1, 'slnt' 0, 'CRSV' 0.5;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
 `
