@@ -11,14 +11,14 @@ const Container = styled.section`
   }
 `
 
-const NotFound = () => {
+const PrivacyPolicy = () => {
   return (
     <Layout>
       <Container>
-        <h2>Oh no! The page you're looking for does not exist.</h2>
+        <h2>Privacy Policy:</h2>
       </Container>
     </Layout>
   )
 }
 
-export default NotFound
+export default PrivacyPolicy

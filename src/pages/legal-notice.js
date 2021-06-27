@@ -11,14 +11,14 @@ const Container = styled.section`
   }
 `
 
-const NotFound = () => {
+const LegalNotice = () => {
   return (
     <Layout>
       <Container>
-        <h2>Oh no! The page you're looking for does not exist.</h2>
+        <h2>Legal Notice:</h2>
       </Container>
     </Layout>
   )
 }
 
-export default NotFound
+export default LegalNotice

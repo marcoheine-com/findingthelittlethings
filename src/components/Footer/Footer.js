@@ -40,7 +40,11 @@ export const Footer = () => {
       .filter((item) => item?.node?.isHeadline)
       .map(
         (item) =>
-          item && <h5 key={item.node.id}>{item.node.linkText}</h5>,
+          item && (
+            <li key={item.node.id}>
+              <h3>{item.node.linkText}</h3>
+            </li>
+          ),
       )
 
   const renderItems = (items) =>
@@ -61,6 +65,8 @@ export const Footer = () => {
   return (
     <ui.Background>
       <ui.Container>
+        <ui.LeftConfetti />
+        <ui.RightConfetti />
         <ui.List>
           {renderHeadline(getInTouchitems)}
           {renderItems(getInTouchitems)}

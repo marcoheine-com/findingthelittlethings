@@ -11,14 +11,14 @@ const Container = styled.section`
   }
 `
 
-const NotFound = () => {
+const FAQPage = () => {
   return (
     <Layout>
       <Container>
-        <h2>Oh no! The page you're looking for does not exist.</h2>
+        <h2>FAQ:</h2>
       </Container>
     </Layout>
   )
 }
 
-export default NotFound
+export default FAQPage

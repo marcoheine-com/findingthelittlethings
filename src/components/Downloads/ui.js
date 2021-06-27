@@ -18,6 +18,7 @@ export const RightConfetti = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   background-image: url(./download-right-confetti.svg);
+  background-position: right;
   display: none;
   height: 100%;
   right: 0;
@@ -49,7 +50,10 @@ export const LeftConfetti = styled.div`
 export const Content = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
+  gap: 20px;
   justify-content: center;
+  position: relative;
+  z-index: 2;
 `
 
 export const Item = styled.div`
