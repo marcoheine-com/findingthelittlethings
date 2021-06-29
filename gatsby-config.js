@@ -2,11 +2,15 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const siteUrl =
+  process.env.URL || `https://www.findingthetlittlethings.com`
+
 module.exports = {
   siteMetadata: {
     title: 'findingthelittlethings',
-    siteUrl: 'https://findingthetlittlethings.com',
-    description: '',
+    siteUrl: 'https://www.findingthetlittlethings.com',
+    description:
+      'Finding the Little Things started as a small Instagram page in August 2020 for me, Laura, to share my designs and connect to others. I grew up in an artists family, always surrounded by paint brushes, chalks and crayons. When I found myself with a lot more free time at hand last year, I decided to be more serious about my drawing again and really dive into digital drawing. So I started sharing on Instagram, growing a small community, working on my first paid projects and soon opened my Etsy shop. Finding the Little Things is a way for me to capture the small things that bring me joy and make life beautiful. My art is colourful, whimsical, a bit magical, sometimes nostalgic and generally optimistic. Everything that I look for in everyday life. If you want to see more of me and my work, go visit my Etsy store or follow me on Instagram. And make sure to say Hi, I always love to chat!',
   },
   plugins: [
     'gatsby-plugin-styled-components',
@@ -62,6 +66,60 @@ module.exports = {
         path: './src/pages/',
       },
       __key: 'pages',
+    },
+    {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `www.findingthelittlethings.com`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+        {
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+          allWpContentNode(filter: {nodeType: {in: ["Post", "Page"]}}) {
+            nodes {
+              ... on WpPost {
+                uri
+                modifiedGmt
+              }
+              ... on WpPage {
+                uri
+                modifiedGmt
+              }
+            }
+          }
+        }
+      `,
+        resolveSiteUrl: () => siteUrl,
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allWpContentNode: { nodes: allWpNodes },
+        }) => {
+          const wpNodeMap = allWpNodes.reduce((acc, node) => {
+            const { uri } = node
+            acc[uri] = node
+
+            return acc
+          }, {})
+
+          return allPages.map((page) => {
+            return { ...page, ...wpNodeMap[page.path] }
+          })
+        },
+        serialize: ({ path, modifiedGmt }) => {
+          return {
+            url: path,
+            lastmod: modifiedGmt,
+          }
+        },
+      },
     },
   ],
 }

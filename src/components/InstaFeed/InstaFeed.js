@@ -17,6 +17,8 @@ export const InstaFeed = () => {
                 gatsbyImageData(
                   layout: CONSTRAINED
                   placeholder: BLURRED
+                  width: 256
+                  height: 256
                 )
               }
             }
