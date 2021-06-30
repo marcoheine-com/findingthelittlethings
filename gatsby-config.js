@@ -2,9 +2,6 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const siteUrl =
-  process.env.URL || `https://www.findingthetlittlethings.com`
-
 module.exports = {
   siteMetadata: {
     title: 'findingthelittlethings',
@@ -73,31 +70,6 @@ module.exports = {
         domain: `www.findingthelittlethings.com`,
       },
     },
-    {
-      resolve: 'gatsby-plugin-sitemap',
-      options: {
-        query: `
-        {
-          allSitePage {
-            nodes {
-              path
-            }
-          }
-        }
-      `,
-        resolveSiteUrl: () => siteUrl,
-        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
-          return allPages.map((page) => {
-            return { ...page }
-          })
-        },
-        serialize: ({ path, modifiedGmt }) => {
-          return {
-            url: path,
-            lastmod: modifiedGmt,
-          }
-        },
-      },
-    },
+    'gatsby-plugin-sitemap',
   ],
 }
