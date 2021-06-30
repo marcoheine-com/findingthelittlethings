@@ -1,0 +1,1 @@
+export { LinkInBio } from './LinkInBio'
