@@ -2,6 +2,22 @@
 
 This is the website for the artist findingthelittlethings.
 
+### TODO:
+
+- [ ] style portfolio projects
+- [ ] style blog post
+- [ ] add content to faq, privacy policy, legal notice
+- [ ] add custom 404
+- [ ] add slider for etsy images
+- [ ] add email forwarding
+- [ ] add sentry
+- [ ] add missing footer links
+- [x] add sitemap
+- [x] add meta description
+- [x] size insta images properly
+- [x] add plausible analytics
+- [x] implement google search console
+
 It's build with [Gatsby](https://www.gatsbyjs.com/) as site generator and [Contentful](https://www.contentful.com/) as headless CMS. It is hosted on [Netlify](https://www.netlify.com/).
 
 ### Get started
@@ -35,8 +51,6 @@ Everything is organised in React components. Every component has three folders. 
         ui.js
         header.js
 ```
-
-For data fetching from external APIs like Etsy and Instagram, we are using [React Query](https://react-query.tanstack.com/overview).
 
 For styling we are using [styled components](https://styled-components.com/).
 
