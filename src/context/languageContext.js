@@ -4,9 +4,8 @@ import { LANGUAGES } from '../constants'
 const LanguageContext = React.createContext()
 const isBrowser = typeof window !== 'undefined'
 
-const defaultLanguage = isBrowser
-  ? localStorage.getItem('language')
-  : LANGUAGES.en
+const defaultLanguage =
+  (isBrowser && localStorage.getItem('language')) || LANGUAGES.en
 
 const LanguageContextProvider = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] =

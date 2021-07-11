@@ -4,6 +4,7 @@ This is the website for the artist findingthelittlethings.
 
 ### TODO:
 
+- [ ] add favicon
 - [ ] style blog post
 - [ ] add content to faq, privacy policy, legal notice
 - [ ] add custom 404
