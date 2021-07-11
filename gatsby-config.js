@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: 'findingthelittlethings',
-    siteUrl: 'https://www.findingthetlittlethings.com',
+    siteUrl: 'https://findingthetlittlethings.com',
     description:
       'Finding the Little Things started as a small Instagram page in August 2020 for me, Laura, to share my designs and connect to others. I grew up in an artists family, always surrounded by paint brushes, chalks and crayons. When I found myself with a lot more free time at hand last year, I decided to be more serious about my drawing again and really dive into digital drawing. So I started sharing on Instagram, growing a small community, working on my first paid projects and soon opened my Etsy shop. Finding the Little Things is a way for me to capture the small things that bring me joy and make life beautiful. My art is colourful, whimsical, a bit magical, sometimes nostalgic and generally optimistic. Everything that I look for in everyday life. If you want to see more of me and my work, go visit my Etsy store or follow me on Instagram. And make sure to say Hi, I always love to chat!',
   },
