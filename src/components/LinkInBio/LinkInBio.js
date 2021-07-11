@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import Logo from '../../assets/Logo_ftlt.svg'
 import * as ui from './ui'
+import { useLanguage } from '../../context/languageContext'
 
 export const LinkInBio = () => {
   const data = useStaticQuery(graphql`
@@ -12,11 +13,14 @@ export const LinkInBio = () => {
             linkLabel
             link
             order
+            node_locale
           }
         }
       }
     }
   `)
+
+  const { currentLanguage } = useLanguage()
 
   return (
     <ui.Background>
@@ -31,13 +35,19 @@ export const LinkInBio = () => {
         </ui.HeaderContent>
       </ui.Header>
       <ui.LinkList>
-        {data?.allContentfulLinkInBio?.edges?.map((edge) => {
-          return (
-            <li key={edge.node.id}>
-              <a href={`${edge.node.link}`}>{edge.node.linkLabel}</a>
-            </li>
+        {data?.allContentfulLinkInBio?.edges
+          ?.filter(
+            (edge) => edge.node.node_locale === currentLanguage,
           )
-        })}
+          .map((edge) => {
+            return (
+              <li key={edge.node.id}>
+                <a href={`${edge.node.link}`}>
+                  {edge.node.linkLabel}
+                </a>
+              </li>
+            )
+          })}
       </ui.LinkList>
     </ui.Background>
   )

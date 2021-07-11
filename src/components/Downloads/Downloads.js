@@ -2,6 +2,9 @@ import * as React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import * as ui from './ui'
+import { CustomLink } from '../../styles/GlobalStyles'
+import { useLanguage } from '../../context/languageContext'
+import { LANGUAGES } from '../../constants'
 
 export const Downloads = () => {
   const data = useStaticQuery(graphql`
@@ -12,6 +15,7 @@ export const Downloads = () => {
             id
             title
             metaInfo
+            node_locale
             previewImage {
               gatsbyImageData(
                 placeholder: BLURRED
@@ -35,15 +39,24 @@ export const Downloads = () => {
     }
   `)
 
-  return (
-    data.allContentfulDownload.edges.length && (
-      <ui.Container>
-        <h2 id="Downloads">Free Downloads</h2>
+  const { currentLanguage } = useLanguage()
 
-        <ui.LeftConfetti />
-        <ui.RightConfetti />
-        <ui.Content>
-          {data?.allContentfulDownload?.edges?.map((edge) => {
+  return (
+    <ui.Container>
+      <h2 id="Downloads">
+        {currentLanguage === LANGUAGES.en
+          ? 'Free Downloads'
+          : 'Kostenlose Downloads'}
+      </h2>
+
+      <ui.LeftConfetti />
+      <ui.RightConfetti />
+      <ui.Content>
+        {data?.allContentfulDownload?.edges
+          ?.filter(
+            (edge) => edge.node.node_locale === currentLanguage,
+          )
+          .map((edge) => {
             const { id, previewImage, title, metaInfo, file } =
               edge.node
 
@@ -59,7 +72,7 @@ export const Downloads = () => {
                   <p>{metaInfo}</p>
 
                   {file.map((item) => (
-                    <a
+                    <CustomLink
                       key={item.file.fileName}
                       href={item.file.url}
                       download
@@ -67,14 +80,13 @@ export const Downloads = () => {
                       rel="noopener noreferrer"
                     >
                       Download
-                    </a>
+                    </CustomLink>
                   ))}
                 </ui.Text>
               </ui.Item>
             )
           })}
-        </ui.Content>
-      </ui.Container>
-    )
+      </ui.Content>
+    </ui.Container>
   )
 }

@@ -4,7 +4,6 @@ This is the website for the artist findingthelittlethings.
 
 ### TODO:
 
-- [ ] style portfolio projects
 - [ ] style blog post
 - [ ] add content to faq, privacy policy, legal notice
 - [ ] add custom 404
@@ -12,6 +11,8 @@ This is the website for the artist findingthelittlethings.
 - [ ] add email forwarding
 - [ ] add sentry
 - [ ] add missing footer links
+- [x] style portfolio projects
+- [x] add localization
 - [x] add sitemap
 - [x] add meta description
 - [x] size insta images properly

@@ -6,3 +6,13 @@ export const Container = styled.section`
   padding: 20px calc(${({ theme }) => theme.rootSpace} * 2.5);
   flex-direction: column;
 `
+
+export const Items = styled.section`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(375px, 375px));
+  column-gap: 25px;
+`
+
+export const ImageWrapper = styled.span`
+  box-shadow: 5px 5px ${({ theme }) => theme.colors.lemon};
+`

@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import Logo from '../../assets/Logo_ftlt.svg'
+import { LanguageToggle } from '../LanguageToggle/LanguageToggle'
 import * as ui from './ui'
+import { useLanguage } from '../../context/languageContext'
 
 export const Header = () => {
   const data = useStaticQuery(graphql`
@@ -11,11 +13,14 @@ export const Header = () => {
           node {
             id
             link
+            node_locale
           }
         }
       }
     }
   `)
+
+  const { currentLanguage } = useLanguage()
 
   return (
     <ui.Header>
@@ -23,13 +28,19 @@ export const Header = () => {
       <ui.RightConfetti />
       <ui.HeaderContent>
         <ui.Nav>
-          {data?.allContentfulHeaderlinks?.edges?.map((edge) => {
-            return (
-              <li key={edge.node.id}>
-                <a href={`#${edge.node.link}`}>{edge.node.link}</a>
-              </li>
+          {data?.allContentfulHeaderlinks?.edges
+            ?.filter(
+              (edge) => edge.node.node_locale === currentLanguage,
             )
-          })}
+            .map((edge) => {
+              return (
+                <li key={edge.node.id}>
+                  <a href={`#${edge.node.link}`}>{edge.node.link}</a>
+                </li>
+              )
+            })}
+
+          <LanguageToggle />
         </ui.Nav>
 
         <Link to="/">

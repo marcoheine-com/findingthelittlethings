@@ -8,24 +8,19 @@ import { WorkWithMe } from '../components/WorkWithMe'
 import { Blog } from '../components/Blog'
 import { Downloads } from '../components/Downloads'
 import { InstaFeed } from '../components/InstaFeed'
-import { QueryClient, QueryClientProvider } from 'react-query'
-
-const queryClient = new QueryClient()
 
 const IndexPage = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Layout>
-        <EtsyShop />
-        <CustomIllustrations />
-        <About />
-        <Portfolio />
-        <WorkWithMe />
-        <Blog />
-        <Downloads />
-        <InstaFeed />
-      </Layout>
-    </QueryClientProvider>
+    <Layout>
+      <EtsyShop />
+      <CustomIllustrations />
+      <About />
+      <Portfolio />
+      <WorkWithMe />
+      <Blog />
+      <Downloads />
+      <InstaFeed />
+    </Layout>
   )
 }
 

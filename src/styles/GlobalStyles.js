@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
+import styled from 'styled-components'
 import '@fontsource/recursive/variable-full.css'
 
 export const GlobalStyle = createGlobalStyle`
-
   body {
     background-color: ${({ theme }) => theme.colors.softviolet};
     font-family: 'RecursiveVariable';
@@ -36,4 +36,12 @@ export const GlobalStyle = createGlobalStyle`
     margin-top: 0;
     line-height: 1.5;
   }
+`
+
+// ### Globally used styled components ###
+export const CustomLink = styled.a`
+  font-family: 'RecursiveVariable';
+  font-variation-settings: 'MONO' 1, 'CASL' 1, 'slnt' 0, 'CRSV' 0.5;
+  font-weight: 700;
+  text-transform: uppercase;
 `

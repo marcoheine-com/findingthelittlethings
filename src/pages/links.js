@@ -4,6 +4,7 @@ import { theme } from '../styles/theme'
 import styled, { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from '../styles/GlobalStyles'
 import { SEO } from '../components/SEO'
+import { LanguageContextProvider } from '../context/languageContext'
 
 const Page = styled.div`
   display: flex;
@@ -13,13 +14,15 @@ const Page = styled.div`
 
 const IndexPage = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <SEO />
-      <Page>
-        <LinkInBio />
-      </Page>
-    </ThemeProvider>
+    <LanguageContextProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <SEO />
+        <Page>
+          <LinkInBio />
+        </Page>
+      </ThemeProvider>
+    </LanguageContextProvider>
   )
 }
 

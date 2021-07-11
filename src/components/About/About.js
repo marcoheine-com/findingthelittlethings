@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import * as ui from './ui'
+import { useLanguage } from '../../context/languageContext'
 
 export const About = () => {
   const data = useStaticQuery(graphql`
@@ -27,6 +28,7 @@ export const About = () => {
                 height: 180
               )
             }
+            node_locale
             text1 {
               id
               text1
@@ -40,60 +42,68 @@ export const About = () => {
     }
   `)
 
-  return data?.allContentfulTextMediaElement?.edges?.map((edge) => {
-    const {
-      id,
-      headline,
-      image,
-      text1,
-      link1,
-      link1Label,
-      link2,
-      link2Label,
-      text2,
-      link3,
-      link3Label,
-    } = edge.node
+  const { currentLanguage } = useLanguage()
 
-    return (
-      <ui.Background key={id} id="About">
-        <ui.Container>
-          <ui.LeftConfetti />
-          <ui.RightConfetti />
-          <ui.Image>
-            <GatsbyImage
-              image={image.gatsbyImageData}
-              alt="Logo"
-              objectFit="contain"
-              objectPosition="top"
-            />
-          </ui.Image>
-          <ui.Headline>{headline}</ui.Headline>
-          <ui.Content>
-            <p>{text1.text1}</p>
-            <ui.LinkList>
+  return data?.allContentfulTextMediaElement?.edges
+    ?.filter((edge) => edge.node.node_locale === currentLanguage)
+    .map((edge) => {
+      const {
+        id,
+        headline,
+        image,
+        text1,
+        link1,
+        link1Label,
+        link2,
+        link2Label,
+        text2,
+        link3,
+        link3Label,
+      } = edge.node
+
+      return (
+        <ui.Background key={id} id="About">
+          <ui.Container>
+            <ui.LeftConfetti />
+            <ui.RightConfetti />
+            <ui.Image>
+              <GatsbyImage
+                image={image.gatsbyImageData}
+                alt="Logo"
+                objectFit="contain"
+                objectPosition="top"
+              />
+            </ui.Image>
+            <ui.Headline>{headline}</ui.Headline>
+            <ui.Content>
+              <p>{text1.text1}</p>
+              <ui.LinkList>
+                <a
+                  href={link1}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link1Label}
+                </a>
+                <a
+                  href={link2}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link2Label}
+                </a>
+              </ui.LinkList>
+              <p>{text2.text2}</p>
               <a
-                href={link1}
+                href={link3}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {link1Label}
+                {link3Label}
               </a>
-              <a
-                href={link2}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link2Label}
-              </a>
-            </ui.LinkList>
-            <p>{text2.text2}</p>
-            <a href={link3} target="_blank" rel="noopener noreferrer">
-              {link3Label}
-            </a>
-          </ui.Content>
-        </ui.Container>
-      </ui.Background>
-    )
-  })
+            </ui.Content>
+          </ui.Container>
+        </ui.Background>
+      )
+    })
 }

@@ -6,7 +6,7 @@ export const Container = styled.section`
   background-position: top center;
   background-size: cover;
   padding: 100px 20px 120px;
-  max-width: 1088px;
+  max-width: 1150px;
   margin: 0 auto;
   position: relative;
   h2 {
@@ -70,11 +70,4 @@ export const Item = styled.div`
 export const Text = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 8px 16px;
-
-  a {
-    font-family: 'RecursiveVariable';
-    font-variation-settings: 'MONO' 1, 'CASL' 1, 'slnt' 0, 'CRSV' 0.5;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
 `

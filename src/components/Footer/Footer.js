@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import * as ui from './ui'
+import { useLanguage } from '../../context/languageContext'
 
 export const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -14,6 +15,7 @@ export const Footer = () => {
             link
             linkText
             isHeadline
+            node_locale
           }
         }
       }
@@ -26,6 +28,7 @@ export const Footer = () => {
             link
             linkText
             isHeadline
+            node_locale
           }
         }
       }
@@ -35,9 +38,12 @@ export const Footer = () => {
   const getInTouchitems = data?.getInTouch?.edges
   const linkItems = data?.links?.edges
 
+  const { currentLanguage } = useLanguage()
+
   const renderHeadline = (items) =>
     items
       .filter((item) => item?.node?.isHeadline)
+      .filter((item) => item.node.node_locale === currentLanguage)
       .map(
         (item) =>
           item && (
@@ -50,6 +56,7 @@ export const Footer = () => {
   const renderItems = (items) =>
     items
       .filter((edge) => !edge.node.isHeadline)
+      .filter((item) => item.node.node_locale === currentLanguage)
       .map((edge) => {
         const { id, link, linkText } = edge.node
 

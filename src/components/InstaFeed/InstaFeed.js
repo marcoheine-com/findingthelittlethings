@@ -19,6 +19,7 @@ export const InstaFeed = () => {
                   placeholder: BLURRED
                   width: 256
                   height: 256
+                  transformOptions: { cropFocus: CENTER, fit: COVER }
                 )
               }
             }

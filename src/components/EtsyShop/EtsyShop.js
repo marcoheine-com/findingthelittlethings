@@ -2,6 +2,8 @@ import * as React from 'react'
 import * as ui from './ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { useLanguage } from '../../context/languageContext'
+import { LANGUAGES } from '../../constants'
 
 export const EtsyShop = () => {
   const [shouldRenderAll, setShouldRenderAll] = React.useState(false)
@@ -39,6 +41,8 @@ export const EtsyShop = () => {
 
   const etsyItems = shouldRenderAll ? allItems : initialFirstFourItems
 
+  const { currentLanguage } = useLanguage()
+
   return (
     <ui.Section id="Shop">
       <h2>Shop</h2>
@@ -61,7 +65,11 @@ export const EtsyShop = () => {
                 <ui.InfoText>
                   <h3>{item.title}</h3>
                   <p>{item.price} €</p>
-                  <ui.Button>buy on etsy</ui.Button>
+                  <ui.Button>
+                    {currentLanguage === LANGUAGES.en
+                      ? 'buy on etsy'
+                      : 'auf etsy kaufen'}
+                  </ui.Button>
                 </ui.InfoText>
               </ui.Link>
             </ui.Item>

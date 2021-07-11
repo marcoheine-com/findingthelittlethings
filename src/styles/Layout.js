@@ -5,6 +5,7 @@ import { SEO } from '../components/SEO'
 import { GlobalStyle } from './GlobalStyles'
 import { theme } from '../styles/theme'
 import styled, { ThemeProvider } from 'styled-components'
+import { LanguageContextProvider } from '../context/languageContext'
 
 const Page = styled.div`
   display: flex;
@@ -17,13 +18,15 @@ const Main = styled.main`
 `
 
 export const Layout = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <SEO />
-    <Page>
-      <Header />
-      <Main>{children}</Main>
-      <Footer />
-    </Page>
-  </ThemeProvider>
+  <LanguageContextProvider>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <SEO />
+      <Page>
+        <Header />
+        <Main>{children}</Main>
+        <Footer />
+      </Page>
+    </ThemeProvider>
+  </LanguageContextProvider>
 )
