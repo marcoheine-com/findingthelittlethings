@@ -52,16 +52,57 @@ export const HeaderContent = styled.section`
     text-align: center;
   }
 `
+export const MenuToggle = styled.button`
+  background-color: ${({ theme }) => theme.colors.peach};
+  border: none;
+  cursor: pointer;
+  font-family: 'RecursiveVariable';
+  font-size: 16px;
+  font-variation-settings: 'MONO' 1, 'CASL' 0, 'slnt' 0, 'CRSV' 0.5;
+  font-weight: 400;
+  height: 48px;
+  text-transform: uppercase;
+  width: 100%;
+  span {
+    margin-right: 8px;
+  }
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
+
+export const Menu = styled.div`
+  display: ${({ showMenu }) => (showMenu ? 'block' : 'none')};
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+  @media (min-width: 768px) {
+    display: block;
+    height: 100%;
+  }
+`
 
 export const Nav = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
   font-family: 'RecursiveVariable';
   font-variation-settings: 'MONO' 1, 'CASL' 1, 'slnt' 0, 'CRSV' 0.5;
   font-weight: 700;
-  gap: 40px;
   list-style-type: none;
+  text-align: center;
   text-transform: uppercase;
   margin: 0;
   padding: 32px 0 14px 0;
+
+  li {
+    margin-bottom: 32px;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    li {
+      margin-bottom: 0px;
+    }
+  }
 `
