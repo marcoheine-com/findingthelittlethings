@@ -67,7 +67,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-plausible`,
       options: {
-        domain: `www.findingthelittlethings.com`,
+        domain: `findingthelittlethings.com`,
       },
     },
     'gatsby-plugin-sitemap',

@@ -5,7 +5,6 @@ import { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import * as ui from './ui'
 import { useLanguage } from '../../context/languageContext'
-import { LANGUAGES } from '../../constants'
 
 export const Portfolio = () => {
   const data = useStaticQuery(graphql`
@@ -26,6 +25,7 @@ export const Portfolio = () => {
               )
               title
             }
+            link
             node_locale
             slug
             teasertext
@@ -48,7 +48,7 @@ export const Portfolio = () => {
             (edge) => edge.node.node_locale === currentLanguage,
           )
           .map((edge) => {
-            const { headline, id, media, slug, teasertext } =
+            const { headline, id, media, slug, teasertext, link } =
               edge.node
 
             return (
@@ -71,11 +71,7 @@ export const Portfolio = () => {
                 })}
                 <h2>{headline}</h2>
                 <p>{teasertext}</p>
-                <Link to={slug}>{`${
-                  currentLanguage === LANGUAGES.en
-                    ? 'More about'
-                    : 'Mehr über'
-                } ${headline}`}</Link>
+                <Link to={slug}>{link}</Link>
               </React.Fragment>
             )
           })}

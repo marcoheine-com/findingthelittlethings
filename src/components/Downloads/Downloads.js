@@ -4,7 +4,6 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import * as ui from './ui'
 import { CustomLink } from '../../styles/GlobalStyles'
 import { useLanguage } from '../../context/languageContext'
-import { LANGUAGES } from '../../constants'
 
 export const Downloads = () => {
   const data = useStaticQuery(graphql`
@@ -36,6 +35,17 @@ export const Downloads = () => {
           }
         }
       }
+      allContentfulHeadline(
+        filter: { category: { eq: "Downloads" } }
+      ) {
+        edges {
+          node {
+            id
+            text
+            node_locale
+          }
+        }
+      }
     }
   `)
 
@@ -44,9 +54,11 @@ export const Downloads = () => {
   return (
     <ui.Container>
       <h2 id="Downloads">
-        {currentLanguage === LANGUAGES.en
-          ? 'Free Downloads'
-          : 'Kostenlose Downloads'}
+        {data.allContentfulHeadline.edges
+          ?.filter(
+            (edge) => edge.node.node_locale === currentLanguage,
+          )
+          .map((edge) => edge.node.text)}
       </h2>
 
       <ui.LeftConfetti />
