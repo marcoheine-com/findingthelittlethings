@@ -40,18 +40,20 @@ export const LeftConfetti = styled.div`
   }
 `
 
-export const HeaderContent = styled.section`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  padding: 0 20px 64px 20px;
-  position: relative;
+export const Menu = styled.div`
+  background-color: ${({ theme }) => theme.colors.peach};
+  display: block;
+  position: fixed;
   z-index: 2;
-
-  h1 {
-    text-align: center;
+  width: 100%;
+  @media (min-width: 768px) {
+    background-color: inherit;
+    display: block;
+    position: relative;
+    height: 100%;
   }
 `
+
 export const MenuToggle = styled.button`
   background-color: ${({ theme }) => theme.colors.peach};
   border: none;
@@ -71,18 +73,8 @@ export const MenuToggle = styled.button`
   }
 `
 
-export const Menu = styled.div`
-  display: ${({ showMenu }) => (showMenu ? 'block' : 'none')};
-  height: 100vh;
-  position: fixed;
-  z-index: 2;
-  @media (min-width: 768px) {
-    display: block;
-    height: 100%;
-  }
-`
-
 export const Nav = styled.ul`
+  display: ${({ showMenu }) => (showMenu ? 'block' : 'none')};
   font-family: 'RecursiveVariable';
   font-variation-settings: 'MONO' 1, 'CASL' 1, 'slnt' 0, 'CRSV' 0.5;
   font-weight: 700;
@@ -99,10 +91,25 @@ export const Nav = styled.ul`
   @media (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 40px;
 
     li {
       margin-bottom: 0px;
     }
+  }
+`
+
+export const HeaderContent = styled.section`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 64px 20px;
+  position: relative;
+  transform: translateY(48px);
+  z-index: 1;
+
+  h1 {
+    text-align: center;
   }
 `

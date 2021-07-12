@@ -29,31 +29,35 @@ export const Header = () => {
     <ui.Header>
       <ui.LeftConfetti />
       <ui.RightConfetti />
-      <ui.MenuToggle onClick={handleClick}>
-        <span>Menu</span>
-        <Menu />
-      </ui.MenuToggle>
-      <ui.HeaderContent>
-        <ui.Menu showMenu={showMenu}>
-          <ui.Nav>
-            {data?.allContentfulHeaderlinks?.edges
-              ?.filter(
-                (edge) => edge.node.node_locale === currentLanguage,
+      <ui.Menu>
+        <ui.MenuToggle onClick={handleClick}>
+          <span>Menu</span>
+          <Menu />
+        </ui.MenuToggle>
+        <ui.Nav showMenu={showMenu}>
+          {data?.allContentfulHeaderlinks?.edges
+            ?.filter(
+              (edge) => edge.node.node_locale === currentLanguage,
+            )
+            .map((edge) => {
+              return (
+                <li key={edge.node.id}>
+                  <a
+                    href={`#${edge.node.link}`}
+                    onClick={() => setShowMenu(false)}
+                  >
+                    {edge.node.link}
+                  </a>
+                </li>
               )
-              .map((edge) => {
-                return (
-                  <li key={edge.node.id}>
-                    <a href={`#${edge.node.link}`}>
-                      {edge.node.link}
-                    </a>
-                  </li>
-                )
-              })}
+            })}
 
+          <li>
             <LanguageToggle />
-          </ui.Nav>
-        </ui.Menu>
-
+          </li>
+        </ui.Nav>
+      </ui.Menu>
+      <ui.HeaderContent>
         <Link to="/">
           <Logo />
         </Link>
