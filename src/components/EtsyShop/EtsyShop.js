@@ -3,12 +3,20 @@ import * as ui from './ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { useLanguage } from '../../context/languageContext'
-import { LANGUAGES } from '../../constants'
 
 export const EtsyShop = () => {
   const [shouldRenderAll, setShouldRenderAll] = React.useState(false)
   const data = useStaticQuery(graphql`
     query {
+      allContentfulAction(filter: { category: { eq: "Etsy" } }) {
+        edges {
+          node {
+            id
+            node_locale
+            label
+          }
+        }
+      }
       allEtsyListing {
         nodes {
           id
@@ -65,11 +73,16 @@ export const EtsyShop = () => {
                 <ui.InfoText>
                   <h3>{item.title}</h3>
                   <p>{item.price} €</p>
-                  <ui.Button>
-                    {currentLanguage === LANGUAGES.en
-                      ? 'buy on etsy'
-                      : 'auf etsy kaufen'}
-                  </ui.Button>
+                  {data.allContentfulAction.edges
+                    .filter(
+                      (edge) =>
+                        edge.node.node_locale === currentLanguage,
+                    )
+                    .map((edge) => (
+                      <ui.Button key={edge.node.id}>
+                        {edge.node.label}123
+                      </ui.Button>
+                    ))}
                 </ui.InfoText>
               </ui.Link>
             </ui.Item>
