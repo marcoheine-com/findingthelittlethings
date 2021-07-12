@@ -11,10 +11,13 @@ const PortfolioPostTemplate = ({ data }) => {
     <Layout>
       <ui.Container>
         <h2>{headline}</h2>
-        <GatsbyImage
-          image={media.gatsbyImageData}
-          alt={media.title}
-        />
+        {media.map((element) => (
+          <GatsbyImage
+            image={element.gatsbyImageData}
+            alt={element.title}
+            key={element.title}
+          />
+        ))}
         {renderRichText(body)}
       </ui.Container>
     </Layout>

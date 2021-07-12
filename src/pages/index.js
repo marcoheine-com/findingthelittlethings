@@ -5,7 +5,6 @@ import { About } from '../components/About'
 import { CustomIllustrations } from '../components/CustomIllustrations'
 import { Portfolio } from '../components/Portfolio'
 import { WorkWithMe } from '../components/WorkWithMe'
-import { Blog } from '../components/Blog'
 import { Downloads } from '../components/Downloads'
 import { InstaFeed } from '../components/InstaFeed'
 
@@ -17,7 +16,6 @@ const IndexPage = () => {
       <About />
       <Portfolio />
       <WorkWithMe />
-      <Blog />
       <Downloads />
       <InstaFeed />
     </Layout>
