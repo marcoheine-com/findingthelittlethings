@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const Section = styled.section`
   padding: 56px 20px 36px;
@@ -14,10 +14,14 @@ export const Items = styled.section`
 
 export const Item = styled.span`
   align-items: center;
-  display: flex;
-  flex-direction: column;
   background-color: #fff;
   box-shadow: 5px 5px ${({ theme }) => theme.colors.peach};
+  display: flex;
+  flex-direction: column;
+
+  animation: ${({ fadeInDirection }) =>
+      fadeInDirection === 'right' ? fadeInRight : fadeInLeft}
+    0.5s linear;
 
   h3 {
     text-align: start;
@@ -40,6 +44,24 @@ export const Item = styled.span`
   }
 `
 
+const fadeInLeft = keyframes`
+    0% {
+      transform: translateX(-50px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  `
+
+const fadeInRight = keyframes`
+  0% {
+    transform: translateX(50px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+`
+
 export const InfoText = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,4 +73,19 @@ export const Button = styled.span`
   padding: 10px 0;
 `
 
-export const Link = styled.a``
+export const MenuButtons = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+  justify-content: center;
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+`
+
+export const Buttongroup = styled.span`
+  display: flex;
+`

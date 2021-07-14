@@ -19,18 +19,18 @@ export const LanguageToggle = () => {
       <legend>Language</legend>
       <input
         type="radio"
-        id="en-US"
-        name="notify"
-        value="en-US"
+        id={LANGUAGES.en}
+        name={LANGUAGES.en}
+        value={LANGUAGES.en}
         checked={currentLanguage === LANGUAGES.en}
         onChange={handleChange}
       />
       <label htmlFor="en-US">EN</label>
       <input
         type="radio"
-        id="de-DE"
-        name="notify"
-        value="de-DE"
+        id={LANGUAGES.de}
+        name={LANGUAGES.de}
+        value={LANGUAGES.de}
         checked={currentLanguage === LANGUAGES.de}
         onChange={handleChange}
       />

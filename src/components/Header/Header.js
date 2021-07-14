@@ -35,26 +35,26 @@ export const Header = () => {
           <Menu />
         </ui.MenuToggle>
         <ui.Nav showMenu={showMenu}>
-          {data?.allContentfulHeaderlinks?.edges
-            ?.filter(
-              (edge) => edge.node.node_locale === currentLanguage,
-            )
-            .map((edge) => {
-              return (
-                <li key={edge.node.id}>
-                  <a
-                    href={`#${edge.node.link}`}
-                    onClick={() => setShowMenu(false)}
-                  >
-                    {edge.node.link}
-                  </a>
-                </li>
+          <ul>
+            {data?.allContentfulHeaderlinks?.edges
+              ?.filter(
+                (edge) => edge.node.node_locale === currentLanguage,
               )
-            })}
+              .map((edge) => {
+                return (
+                  <li key={edge.node.id}>
+                    <a
+                      href={`#${edge.node.link}`}
+                      onClick={() => setShowMenu(false)}
+                    >
+                      {edge.node.link}
+                    </a>
+                  </li>
+                )
+              })}
+          </ul>
 
-          <li>
-            <LanguageToggle />
-          </li>
+          <LanguageToggle />
         </ui.Nav>
       </ui.Menu>
       <ui.HeaderContent>

@@ -9,6 +9,8 @@ export const Background = styled.section`
   max-width: 980px;
   margin-left: auto;
   margin-right: auto;
+  /* TODO: Remove when we bring back the blog component */
+  margin-bottom: 60px;
 
   @media (min-width: 1000px) {
     background-size: contain;

@@ -44,7 +44,7 @@ export const Menu = styled.div`
   background-color: ${({ theme }) => theme.colors.peach};
   display: block;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   @media (min-width: 768px) {
     background-color: inherit;
@@ -73,15 +73,25 @@ export const MenuToggle = styled.button`
   }
 `
 
-export const Nav = styled.ul`
-  display: ${({ showMenu }) => (showMenu ? 'block' : 'none')};
+export const Nav = styled.div`
+  display: ${({ showMenu }) => (showMenu ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: center;
   font-family: 'RecursiveVariable';
   font-variation-settings: 'MONO' 1, 'CASL' 1, 'slnt' 0, 'CRSV' 0.5;
   font-weight: 700;
-  list-style-type: none;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    @media (min-width: 768px) {
+      display: flex;
+      gap: 40px;
+    }
+  }
   text-align: center;
   text-transform: uppercase;
-  margin: 0;
   padding: 32px 0 14px 0;
 
   li {
@@ -91,6 +101,7 @@ export const Nav = styled.ul`
   @media (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
     gap: 40px;
 

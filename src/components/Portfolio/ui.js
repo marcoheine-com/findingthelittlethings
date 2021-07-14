@@ -9,10 +9,10 @@ export const Container = styled.section`
 
 export const Items = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(375px, 375px));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 375px));
   column-gap: 25px;
 `
 
 export const ImageWrapper = styled.span`
-  box-shadow: 5px 5px ${({ theme }) => theme.colors.lemon};
+  box-shadow: 5px 5px ${({ theme }) => theme.colors.peach};
 `

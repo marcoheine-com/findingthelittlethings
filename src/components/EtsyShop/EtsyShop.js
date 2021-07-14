@@ -3,9 +3,12 @@ import * as ui from './ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { useLanguage } from '../../context/languageContext'
+import PreviousArrow from '../../assets/PreviousArrow.svg'
+import NextArrow from '../../assets/NextArrow.svg'
+import MenuButtonActive from '../../assets/MenuButtonActive.svg'
+import MenuButton from '../../assets/MenuButton.svg'
 
 export const EtsyShop = () => {
-  const [shouldRenderAll, setShouldRenderAll] = React.useState(false)
   const data = useStaticQuery(graphql`
     query {
       allContentfulAction(filter: { category: { eq: "Etsy" } }) {
@@ -17,7 +20,7 @@ export const EtsyShop = () => {
           }
         }
       }
-      allEtsyListing {
+      allEtsyListing(limit: 16) {
         nodes {
           id
           title
@@ -42,23 +45,86 @@ export const EtsyShop = () => {
   `)
 
   const allItems = data?.allEtsyListing?.nodes
-  const initialFirstFourItems = data?.allEtsyListing?.nodes.slice(
-    0,
-    4,
+
+  const [sliceValues, setSliceValues] = React.useState({
+    start: 0,
+    end: 4,
+  })
+
+  const initialFourItems = allItems.slice(
+    sliceValues.start,
+    sliceValues.end,
   )
 
-  const etsyItems = shouldRenderAll ? allItems : initialFirstFourItems
+  const [etsyItems, setEtsyItems] = React.useState(initialFourItems)
+  const [fadeInDirection, setFadeInDirection] = React.useState('left')
+
+  const useIsMount = () => {
+    const isMountRef = React.useRef(true)
+    React.useEffect(() => {
+      isMountRef.current = false
+    }, [])
+    return isMountRef.current
+  }
+
+  const isMount = useIsMount()
+
+  React.useEffect(() => {
+    // Don't set values on initial render
+    if (!isMount) {
+      setEtsyItems(allItems.slice(sliceValues.start, sliceValues.end))
+    }
+  }, [sliceValues])
 
   const { currentLanguage } = useLanguage()
+
+  const handlePreviousClick = () => {
+    setFadeInDirection('left')
+
+    if (sliceValues.start < 4) {
+      setSliceValues({
+        start: allItems.length - 4,
+        end: allItems.length,
+      })
+      return
+    }
+
+    setSliceValues({
+      start: sliceValues.start - 4,
+      end: sliceValues.end - 4,
+    })
+  }
+
+  const handleNextClick = () => {
+    setFadeInDirection('right')
+
+    if (sliceValues.end >= allItems.length) {
+      setSliceValues({ start: 0, end: 4 })
+      return
+    }
+
+    setSliceValues({
+      start: sliceValues.start + 4,
+      end: sliceValues.end + 4,
+    })
+  }
+
+  const renderMenuButton = (index) =>
+    sliceValues.start === index ? (
+      <MenuButtonActive />
+    ) : (
+      <MenuButton />
+    )
 
   return (
     <ui.Section id="Shop">
       <h2>Shop</h2>
+
       <ui.Items>
         {etsyItems.map((item) => {
           return (
-            <ui.Item key={item.id}>
-              <ui.Link
+            <ui.Item key={item.id} fadeInDirection={fadeInDirection}>
+              <a
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -70,8 +136,9 @@ export const EtsyShop = () => {
                   }
                   alt={item.title}
                 />
+
                 <ui.InfoText>
-                  <h3>{item.title}</h3>
+                  <h3>{item.title.replace(/&quot;/g, '"')}</h3>
                   <p>{item.price} €</p>
                   {data.allContentfulAction.edges
                     .filter(
@@ -80,18 +147,48 @@ export const EtsyShop = () => {
                     )
                     .map((edge) => (
                       <ui.Button key={edge.node.id}>
-                        {edge.node.label}123
+                        {edge.node.label}
                       </ui.Button>
                     ))}
                 </ui.InfoText>
-              </ui.Link>
+              </a>
             </ui.Item>
           )
         })}
       </ui.Items>
-      <button onClick={() => setShouldRenderAll(!shouldRenderAll)}>
-        {shouldRenderAll ? 'Show less' : 'Show more'}
-      </button>
+
+      <ui.MenuButtons>
+        <button onClick={handlePreviousClick}>
+          <PreviousArrow />
+        </button>
+
+        <ui.Buttongroup>
+          <button
+            onClick={() => setSliceValues({ start: 0, end: 4 })}
+          >
+            {renderMenuButton(0)}
+          </button>
+          <button
+            onClick={() => setSliceValues({ start: 4, end: 8 })}
+          >
+            {renderMenuButton(4)}
+          </button>
+          <button
+            onClick={() => setSliceValues({ start: 8, end: 12 })}
+          >
+            {renderMenuButton(8)}
+          </button>
+          <button
+            onClick={() => setSliceValues({ start: 12, end: 16 })}
+          >
+            {renderMenuButton(12)}
+          </button>
+        </ui.Buttongroup>
+
+        <button>
+          <NextArrow onClick={handleNextClick} />
+        </button>
+      </ui.MenuButtons>
     </ui.Section>
   )
 }
