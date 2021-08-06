@@ -70,6 +70,5 @@ module.exports = {
         domain: `findingthelittlethings.com`,
       },
     },
-    'gatsby-plugin-sitemap',
   ],
 }
