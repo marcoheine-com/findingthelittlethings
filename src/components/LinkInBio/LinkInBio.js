@@ -10,6 +10,7 @@ export const LinkInBio = () => {
       allContentfulLinkInBio(sort: { fields: order }) {
         edges {
           node {
+            id
             linkLabel
             link
             order

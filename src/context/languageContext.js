@@ -2,14 +2,11 @@ import * as React from 'react'
 import { LANGUAGES } from '../constants'
 
 const LanguageContext = React.createContext()
-const isBrowser = typeof window !== 'undefined'
-
-const defaultLanguage =
-  (isBrowser && localStorage.getItem('language')) || LANGUAGES.en
 
 const LanguageContextProvider = ({ children }) => {
-  const [currentLanguage, setCurrentLanguage] =
-    React.useState(defaultLanguage)
+  const [currentLanguage, setCurrentLanguage] = React.useState(
+    LANGUAGES.en,
+  )
 
   const value = { currentLanguage, setCurrentLanguage }
 
