@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
-  background-image: url(./Download-svg.svg);
+  background-image: url(Download-svg.svg);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
@@ -17,7 +17,7 @@ export const Container = styled.section`
 export const RightConfetti = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url(./download-right-confetti.svg);
+  background-image: url(download-right-confetti.svg);
   background-position: right;
   display: none;
   height: 100%;
@@ -34,7 +34,7 @@ export const RightConfetti = styled.div`
 export const LeftConfetti = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url(./download-left-confetti.svg);
+  background-image: url(download-left-confetti.svg);
   display: none;
   height: 100%;
   left: 0;

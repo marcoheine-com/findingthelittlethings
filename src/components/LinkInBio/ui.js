@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import '@fontsource/recursive/variable-full.css'
 
 export const Header = styled.header`
-  background-image: url(./header-background.svg);
+  background-image: url(header-background.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;

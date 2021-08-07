@@ -17,7 +17,7 @@ export const Container = styled.footer`
 export const RightConfetti = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url(./footer-right-confetti.svg);
+  background-image: url(footer-right-confetti.svg);
   background-position: right;
   display: none;
   height: 100%;
@@ -34,7 +34,7 @@ export const RightConfetti = styled.div`
 export const LeftConfetti = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url(./footer-left-confetti.svg);
+  background-image: url(footer-left-confetti.svg);
   display: none;
   height: 100%;
   left: 0;

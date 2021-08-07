@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import '@fontsource/recursive/variable-full.css'
 
 export const Header = styled.header`
-  background-image: url(./header-background.svg);
+  background-image: url(header-background.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -11,7 +11,7 @@ export const Header = styled.header`
 export const RightConfetti = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url(./RightConfetti.svg);
+  background-image: url(RightConfetti.svg);
   background-position: right;
   display: none;
   height: 100%;
@@ -28,7 +28,7 @@ export const RightConfetti = styled.div`
 export const LeftConfetti = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url(./LeftConfetti.svg);
+  background-image: url(LeftConfetti.svg);
   display: none;
   height: 100%;
   left: 0;

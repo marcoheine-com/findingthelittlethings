@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Background = styled.section`
   background-color: ${({ theme }) => theme.colors.softviolet};
-  background-image: url(./workWithMe-background.svg);
+  background-image: url(workWithMe-background.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -22,7 +22,7 @@ export const Container = styled.section`
 
   @media (min-width: 560px) {
     padding: 100px 200px 100px 100px;
-    background-image: url(./WorkWithMeConfetti.svg);
+    background-image: url(WorkWithMeConfetti.svg);
     background-repeat: no-repeat;
     background-position-x: 100%;
   }

@@ -8,8 +8,11 @@ export const Section = styled.section`
 export const Items = styled.section`
   display: grid;
   gap: 25px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 270px));
-  justify-content: center;
+  grid-template-columns: repeat(4, 270px);
+  overflow: scroll;
+  @media (min-width: 1200px) {
+    justify-content: center;
+  }
 `
 
 export const Item = styled.span`
@@ -18,10 +21,6 @@ export const Item = styled.span`
   box-shadow: 5px 5px ${({ theme }) => theme.colors.peach};
   display: flex;
   flex-direction: column;
-
-  animation: ${({ fadeInDirection }) =>
-      fadeInDirection === 'right' ? fadeInRight : fadeInLeft}
-    0.5s linear;
 
   h3 {
     text-align: start;
