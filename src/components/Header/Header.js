@@ -5,6 +5,7 @@ import Menu from '../../assets/menu.svg'
 import { LanguageToggle } from '../LanguageToggle/LanguageToggle'
 import * as ui from './ui'
 import { useLanguage } from '../../context/languageContext'
+import HeaderSVG from '../../assets/header-background.svg'
 
 export const Header = () => {
   const data = useStaticQuery(graphql`
@@ -25,8 +26,12 @@ export const Header = () => {
   const [showMenu, setShowMenu] = React.useState(false)
   const handleClick = () => setShowMenu(!showMenu)
 
+  const HEADER_INLINE_STYLE = {
+    backgroundImage: `url(${HeaderSVG})`,
+  }
+
   return (
-    <ui.Header>
+    <ui.Header style={HEADER_INLINE_STYLE}>
       <ui.LeftConfetti />
       <ui.RightConfetti />
       <ui.Menu>
