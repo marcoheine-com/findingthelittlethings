@@ -3,7 +3,7 @@ require('dotenv').config({
 })
 
 module.exports = {
-  pathPrefix: '/faq',
+  pathPrefix: '/faq/',
   siteMetadata: {
     title: 'findingthelittlethings',
     siteUrl: 'https://findingthetlittlethings.com',
