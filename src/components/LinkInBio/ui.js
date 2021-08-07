@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import '@fontsource/recursive/variable-full.css'
+import HeaderSVG from '../../assets/header-background.svg'
 
 export const Header = styled.header`
-  background-image: url(header-background.svg);
+  background-image: url(${HeaderSVG});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
